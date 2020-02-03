@@ -9,6 +9,7 @@ When using floating point numbers in your programming projects, I recommend alwa
 One thing to note about Fortran is that the syntax has evolved over the years, so unfortunately, there are several ways of declaring and using floating numbers. 
 
 To declare a single precision real number, use one of the following (the 4 refers to 4 bytes):
+
     real    :: xs
     real(4) :: xs
 
@@ -34,6 +35,7 @@ I’ve never actually found the kind functions useful in practice because you ha
 Programs usually use some kind of constants in them.  The compiler needs to know what data type the constants are.
 
 Integer constants have no decimal point
+
     i=3
     x=y**2        ! 2 is an integer constant
     z=sin(2*x)    ! 2 is an integer constant
@@ -46,6 +48,7 @@ Real constants have a decimal point or “e” exponent.
     z=sin(2.0*x)
 
 Double precision constants are declared by replacing the “e” exponent with a “d”, or adding “d0” if there is no exponent.
+
     x=4.0d0
     avag=6.02214d24
     x=y**1.4d0
@@ -63,7 +66,7 @@ Defining the correct constant is important for accuracy!  You should always try 
 
 If you do arithmetic with a single and a double, or an integer with a double, it will promote the lower precision number to the higher precision number.  However, the lower precision number may not have the accuracy you think it does.
 
-*Watch out for integer division!*   Having something like “1/2” will evaluate to 0 with integer division.
+**Watch out for integer division!**   Having something like "1/2" will evaluate to 0 with integer division.
 
 ## Intrinsic Functions
 
@@ -74,11 +77,13 @@ In modern Fortran, intrinsic functions (sin, cos, log, etc.) will return the pre
 
 ## Common Mistakes
 In this example, “pi” is declared with many digits, but it is stored in a single precision number. Therefore, it will only store 5-6 digits of accuracy.   When you use it, you are not getting the accuracy you want.
+
     real(8) :: x, z
     real    :: pi=3.1415926535897932384
     z=cos(pi*x)     ! may not have the accuracy you desire
 
 In this similar example, you have two variables that are double precision, but they are set equal to a single log2 function and a double log2 function. 
+
     real(8) :: ln2_sgl, ln2_dbl
     ln2_sgl=log(2.0)    ! single precision constant
     ln2_dbl=log(2.0d0)  ! double precision constant
