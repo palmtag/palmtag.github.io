@@ -55,9 +55,8 @@ export SERPENT_ACELIB="/cm/shared/codes/serpent/xsdata/endfb71/sss_endfb71u.xsda
 
 CASE=NRX_Test_Set     # name of input file
 
-# Note that an environment variable was used to specify the number of processors
-# to the same specified on the slurm command above (32)
-$EXEC -omp $SLURM_JOB_CPUS_PER_NODE $CASE.serp
+# Need to specify number of OMP threads manually (32)
+$EXEC -omp 32 $CASE.serp
 ```
 
 ## Example 2 - MPI
@@ -103,7 +102,6 @@ Note that you can use multiple nodes if you want to add more cores.
 cd $SLURM_SUBMIT_DIR
 date
 echo "SLURM_NTASKS = $SLURM_NTASKS"
-echo "SLURM_NPROCS = $SLURM_NPROCS"
 
 EXEC=/cm/shared/codes/serpent/bin/2.1.31/sss2
 export SERPENT_ACELIB="/cm/shared/codes/serpent/xsdata/endfb71/sss_endfb71u.xsdata"
@@ -111,6 +109,6 @@ export SERPENT_ACELIB="/cm/shared/codes/serpent/xsdata/endfb71/sss_endfb71u.xsda
 CASE=NRX_Test_Set     # name of input file
 
 # Specify the number of MPI tasks with environment variable
-# Need to specify number of OMP threads manually
+# Need to specify number of OMP threads manually (16)
 mpirun -np $SLURM_NTASKS $EXEC -omp 16 $CASE.serp
 ```
