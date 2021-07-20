@@ -103,6 +103,8 @@ Note that you can use multiple nodes if you want to add more cores.
 
 cd $SLURM_SUBMIT_DIR
 date
+echo "SLURM_NTASKS = $SLURM_NTASKS"
+echo "SLURM_NPROCS = $SLURM_NPROCS"
 
 EXEC=/cm/shared/codes/serpent/bin/2.1.31/sss2
 export SERPENT_ACELIB="/cm/shared/codes/serpent/xsdata/endfb71/sss_endfb71u.xsdata"
@@ -110,5 +112,5 @@ export SERPENT_ACELIB="/cm/shared/codes/serpent/xsdata/endfb71/sss_endfb71u.xsda
 CASE=NRX_Test_Set     # name of input file
 
 # Specify the number of MPI tasks and number of OMP cores per task
-mpirun -np 4 $EXEC -omp 16 $CASE.serp
+mpirun -np $SLURM_NTASKS $EXEC -omp $SLURM_NPROCS $CASE.serp
 ```
