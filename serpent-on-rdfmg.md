@@ -45,8 +45,9 @@ export SERPENT_ACELIB="/cm/shared/codes/serpent/xsdata/endfb71/sss_endfb71u.xsda
 
 CASE=NRX_Test_Set     # name of input file
 
-# number of processors listed below should match value in slurm command above (32)
-$EXEC -omp 32 $CASE.serp
+# Note that an environment variable was used to specify the number of processors
+# to the same specified on the slurm command above (32)
+$EXEC -omp $SLURM_JOB_CPUS_PER_NODE $CASE.serp
 ```
 
 
