@@ -33,6 +33,8 @@ You need to first load gfortran version 7.2 to run Serpent and MPICH
 module load GCC/7.2.0-2.29
 module load MPICH/3.2.1-GCC-7.2.0-2.29
 ```
+General information about running Serpent can be found at the website
+http://serpent.vtt.fi/mediawiki/index.php/Installing_and_running_Serpent
 
 ## Example 1 - OMP
 
