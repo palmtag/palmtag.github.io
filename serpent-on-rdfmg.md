@@ -59,6 +59,8 @@ CASE=NRX_Test_Set     # name of input file
 
 # Need to specify number of OMP threads manually (32)
 $EXEC -omp 32 $CASE.serp
+
+date
 ```
 
 ## Example 2 - MPI
@@ -85,6 +87,8 @@ CASE=NRX_Test_Set     # name of input file
 
 # Specify the number of MPI tasks with environment variable
 mpirun -np $SLURM_NTASKS $EXEC $CASE.serp
+
+date
 ```
 
 ## Example 3 - Combine OMP and MPI
@@ -113,4 +117,6 @@ CASE=NRX_Test_Set     # name of input file
 # Specify the number of MPI tasks with environment variable
 # Need to specify number of OMP threads manually (16)
 mpirun -np $SLURM_NTASKS $EXEC -omp 16 $CASE.serp
+
+date
 ```
