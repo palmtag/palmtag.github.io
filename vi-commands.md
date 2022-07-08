@@ -101,6 +101,23 @@ You can then place this text in other places using the `P` (put) command.
 For example, you can delete 10 lines with `10dd`, move to a new location and put them with `P`.
 If you don't want to delete the original lines, you can use `10Y` to yank them without deleting.
 
+## Advanced
+  
+* `:set nofoldenable` to turn off the strange format you might see when opening CASMO files.
+* `:let fortran_free_source=1`  always use free-format for fortran source files (not fixed format)
+* `:syntax on`  turn on color syntax
+* `:colorscheme desert`  select different color schemes
+  
+You can use a configuration file (called ".vimrc" in your home directory) to automatically turn on options you use a lot.
+My current configuration file looks like:
+
+```
+set ic
+set nofoldenable
+syntax on
+let fortran_free_source=1
+colorscheme desert
+```
 
 
 
